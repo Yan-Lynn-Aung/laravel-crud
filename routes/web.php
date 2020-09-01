@@ -1,38 +1,22 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
+Route::get('/', 'HomeController@index');
+Route::get('page/add', 'PageController@create');
+Route::get('page/{page}/delete', [
+    'as'   => 'page.delete',
+    'uses' => 'PageController@destroy',
+]);
+Route::resource('/page', 'PageController');
 
-Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('category','CategoryController');
+function is_active_sorter($key, $direction = 'ASC')
+{
+    if (request('sortby') == $key && request('sortdir') == $direction) {
+        return true;
+    }
 
-Route::get('profile', function(){
-    return view('profile');
-});
+    return false;
+}
 
-/* View Composer*/
-View::composer(['*'], function($view){
-    
-    $user = Auth::user();
-    $view->with('user',$user);
-    
-
-    
-
-});
 

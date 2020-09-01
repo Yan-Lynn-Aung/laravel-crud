@@ -1,30 +1,31 @@
-# laravel-crud
-Basic CRUD Operation with Laravel and AdminLTE in Single Page
-
-## Requirements 
-
-- PHP >= 7.0.0
-- OpenSSL PHP Extension
-- PDO PHP Extension
-- Mbstring PHP Extension
-- Tokenizer PHP Extension
-- XML PHP Extension
+# Simple Laravel CRUD Demo
 
 ## Installation
 
-Just clone the project to anywhere in your computer. 
-Run ` composer install ` <br>
-Then ` npm install ` <br>
-and ` php artisan migrate `
-change .env and setUp dataBase <br>
-you need to key `php artisan key:generate`
+We need composer to install all packages.
+Here the complete instruction to install composer https://getcomposer.org/doc/00-intro.md
 
-`change User Table -> user_type -> user to admin`
+Let's install all packages, by running this command from Terminal
 
-Now you are done. 
-<br>
+```
+composer install
+```
 
-` php artisan serve ` and open the project on the browser. 
+Let's do some migration and seed with dummy data.
 
+```
+php artisan migrate --seed
+```
 
+And run the web server
 
+```
+php artisan serve
+```
+
+Now, visit http://localhost:8000 to try the demo.
+
+## Notes
+
+This demo use SQLite database by default.
+If you want to use another database, you can set configuration in `config/database.php`.
